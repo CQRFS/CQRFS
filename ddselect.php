@@ -1,5 +1,5 @@
 <body background="/img/header.jpg">
-
+//weilizhu
 <?php
 session_start(); 
 $con = mysql_connect("localhost","root","3317323");
