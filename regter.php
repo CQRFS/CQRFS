@@ -8,7 +8,7 @@
 <body> 
  
 <center>
-
+<p><br /></p>
 
  <h2>Please register your CQRFS account  :)</h2>
  <p><br /></p>
