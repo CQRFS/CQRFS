@@ -1,6 +1,7 @@
 <?php
 if(!mysql_connect("localhost","root","tx19900101"))
-{
+{ //Fengguo tian editing
+
 	///////cqrfs fgt
 	// Database: `user_profile`
 // Table structure for table `user_reg`
