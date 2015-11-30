@@ -1,6 +1,7 @@
 <?php
 
-///////cqrfs fgt
+///////cqrfs //Fengguo tian editing
+
     // Database: `user_profile`
 // Table structure for table `user_reg`
 // CREATE TABLE user_reg (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
