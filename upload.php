@@ -3,6 +3,7 @@ name="uploadfile">upload your code ：<input type="file" name="upfile" /><br>
 <input type="submit" value="upload" /></form> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
 <?php 
+//weilizhu
 //print_r($_FILES["upfile"]); 
 //echo "/home/ubuntu/codesrc/codefortest/";
 session_start();
