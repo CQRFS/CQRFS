@@ -1,5 +1,7 @@
 <!-- <html>
   <head>
+  <!--//Fengguo tian editing
+  -->
     <title>Ajax Search Box using PHP and MySQL</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
      <script src="typeahead.min.js"></script>
