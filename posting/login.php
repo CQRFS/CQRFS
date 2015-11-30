@@ -2,7 +2,8 @@
 <?php
 session_start();
 include_once 'dbconnect.php';
-// cqrfs fgt
+// cqrfs //Fengguo tian editing
+
 // Database: `posting`
 // Table structure for table `posting_detail`
 // CREATE TABLE IF NOT EXISTS 'posting_detail'(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, user_name varchar(50),user_mail varchar(50),project_name varchar(50), budget varchar(50), programming_language varchar(50), project_detail text);
