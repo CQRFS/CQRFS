@@ -1,6 +1,7 @@
 
 <?php
 session_start();
+//weilizhu
 include_once 'dbconnect.php';
 ///////cqrfs fgt
     // Database: `user_profile`
