@@ -1,4 +1,5 @@
 <?php
+//Fengguo tian editing
 if(!mysql_connect("localhost","root","tx19900101"))
 {
 	///////cqrfs fgt
