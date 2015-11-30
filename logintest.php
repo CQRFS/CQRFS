@@ -1,5 +1,5 @@
 <?php
-
+//weilizhu
 
 $lifeTime = 5;  
 session_set_cookie_params($lifeTime);  
