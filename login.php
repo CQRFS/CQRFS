@@ -3,7 +3,7 @@
 session_start();
 //weilizhu
 include_once 'dbconnect.php';
-///////cqrfs fgt
+///////cqrfs fengguo Tian
     // Database: `user_profile`
 // Table structure for table `user_reg`
 // CREATE TABLE user_reg (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
