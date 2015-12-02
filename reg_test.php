@@ -1,5 +1,5 @@
 <?php 
-//weilizhu
+
 $con = mysql_connect("localhost","root","3317323");
 if (!$con)
   {
