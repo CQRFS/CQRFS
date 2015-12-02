@@ -1,7 +1,6 @@
 
 <?php
 session_start();
-//weilizhu
 include_once 'dbconnect.php';
 ///////cqrfs fengguo Tian
     // Database: `user_profile`
