@@ -1,5 +1,5 @@
 <?php
-//weilizhu
+
 session_start();
 echo "string";
 echo $_SESSION['username'];
