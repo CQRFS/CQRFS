@@ -100,7 +100,6 @@ echo'</br>';
 echo $snapid;
 echo'</br>';
 
-//gvxvhsc
 $result2 = mysql_query("SELECT * FROM project_measures WHERE snapshot_id='$snapid' and metric_id='133'");
 
 $srate="dsvf";
