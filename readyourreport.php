@@ -146,6 +146,7 @@
                    <tr>
                       <td width="300">
                           <select style="WIDTH: 250px" name="select your report" onchange="getSelectValue(this)">
+                           <option value ="">Please select your report</option>
                             <?php 
                                      require("updatedatabase.php");
                                      $con = mysql_connect("localhost","root","3317323");
