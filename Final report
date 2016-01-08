@@ -1,0 +1,991 @@
+
+
+
+
+Paper Name:   Final report
+
+
+Course Name:     CSE 542       
+
+               
+Project name: Code Quality-based Recommendation Free-coding System (CQRFS)
+
+
+ Group Members: Fengguo Tian(Group Contact), WeiLi Zhu, Chuohao Jiang, Ang Li, Jixing Shi    
+
+
+Dec/19/2015
+
+ 
+
+
+
+
+
+
+Index
+FINAL REPORT	2
+CHAPTER 1. REQUIREMENT DOCUMENT	2
+1.1 Introduction	2
+1.2 System analysis	4
+1.3 Use cases and Requirements	5
+1.4 Limitations and Constraints	9
+Reference	10
+CHAPTER 2. DESIGN DOCUMENT	11
+2.0. Abstract	11
+2.1. System information	11
+2.2. Architecture Design	12
+2.3. Modules & components	13
+2.4. Procedural Design	32
+2.5. Requirements Matrix	35
+2.6. Component design	35
+Reference	38
+CHAPTER 3. LIST OF KNOWN OPEN ISSUES	39
+CHAPTER 4. CODE HEALTH REPORTS:	40
+4.1 Unit testing	40
+4.2. Code metrics	45
+DETAILED MEMBER CONTRIBUTION：	49
+
+
+
+
+
+ 
+Final report 
+
+Chapter 1. Requirement Document
+
+1.1 Introduction
+1.1.1 Background
+As we known, IT greatly driven the modern industry and everyone knows the software engineering and programming and Google and Java, which means our programming community are really strong and powerful. On the other sides, we also see there are still many companies are of great need many programmers to help them build their startup and so on. So we think there are really necessary to establish a platform to organize the powerful programming resources to make full use of them and create more job opportunities. 
+There are many online platforms [1] such as Elance, guru, etc., but there are limitations of them such as deficiency of technical support provided for micro-enterprises and NPO, and lack of support for offline users.
+Free programmers get free styles of living and working. They are considered self-employed to some extent. It helps organizations with low or no budgets to resolve problems which involve IT knowledge and it’s of better use of IT human resource around the world.  In addition, novel programmers get an easy access to earn real-world experiences.
+
+1.1.2 Motivation and purposes
+In order to make use of the programming resource of the energetic programming community and help fulfill the outage of programming resource for micro-enterprises and NPO and personal interest. Let many people have the access to finish the hard coding problem timely and properly, in the meantime, giving many gifted software engineers to show their talent. 
+We propose to build a Code Quality-based Ranking and Recommendation Freecoding System (CQRFS). We establish the ranking and recommendation system based on the reputation of enterprises and the code quality of programmers, on the other side, the recommendation system will calculate the best match for both sides in order to provide the most optimized business relationships. More importantly, the recommendation system help lots of companies find more talented engineers and help engineers improve their programming skills and also provide more job opportunities for those people who prefer working at home. 
+          
+1.1.3 Users:    
+A: Software Engineers
+B: Startup Companies (All kinds of area)
+     Software Companies
+C: Non-Profit Organizations (NPO)
+     Non-Governmental Organization (NGO)
+D: Personal Websites, APP
+
+
+1.1.4 Stakeholders:
+
+ 
+In this system cycle, we assume 5 different subjects which show as Fig. 1.1;
+The administrator takes charge of maintaining the CQRFS and interacting with the different subjects to improve better service.
+For organizations, this CQRFS would help them find more efficient programmer to solve their problem and make the most reasonable IT cost.
+For programmers, this CQRFS would help them to find the most appropriate coding task，and help them to get the feedback of their code quality. In return, the system would gather the data of their coding history to analysis the programming pattern.
+For the community, the CQRFS would accelerate the flow of resources and Optimize resource structure and optimize resource structure.
+The CQRFS would work smart scheduler help manage the resource of the community, 
+
+
+
+1.2 System analysis 
+
+1.2.1 System description
+CQRRFS is an online platform, which provides connections between programmers and startups, micro enterprises and NPOs. Its goal is to make use of vast IT human resource to help organizations above settle down IT-specific problems. The diagram of system is shown below:
+	 
+Fig. 2.1 Diagram of CQRFS
+As shown in the diagram, the whole system consists of five modules. The functionalities of individual modules are discussed below:
+Profile management module: This module manages all of the profiles of platform users, which include programmers, organizations and platform administrators.
+Recommendation module: This module is responsible for selecting tasks for programmers and recommending programmers to organizations based on the profile of programmers and the nature of the problems posted by organizations. 
+Task formation & dispatch module: This module asks organizations to post their problems in great details, and then decompose the problems into a series of “tasks”. When a programmer signs up to handle a task, the module will automatically assign corresponding task to the programmer.
+Test module: This module evaluates the tasks which programmers submit to the platform using third-party test platform. It also generates feedback when it finishes testing, which will be accessible to programmers and organizations.
+Payment management module: This module is responsible for managing online payment and wage delivery. 
+1.2.2 Advantages
+1.	Real-name registration system to ensure the authenticity of the users' data.
+2.	Anonymous communication system to protect the user's privacy.
+3.	Reducing IT organizations costs by distributing programming tasks online.
+4.	Offering programmers more flexible way of working.
+5.	Ranking and matching system for both task providers and programmers.
+6.	Punishment mechanism to promptly remove notorious employers and programmers who cannot complete tasks assigned to them, tracking and coordinating the task progress of each group.
+7.	Location based coding group, which is easy for users to contact offline.
+
+1.3 Use cases and Requirements
+
+In this section, we will discuss the use case in software engineering, which involve in our program. The CQRFS, which will offer the platform from both local resource (such as resume from the local people who looking for a job) and Internet resource to share.
+
+1.3.1 Use Cases
+1.	Both users should able to upload their own information
+2.	Both users should able to post their requirement/condition.
+3.	Programmer should able to use the platform to search a job.
+4.	Companies should able to use the platform to post their workload.
+5.	Companies should able to use the platform to search job-seekerjobseeker.
+6.	Both users should able to use a filter to minimize their result.
+7.	Recommend model will send information to both users basic on customers’ behaviors. This model needs information from the filter when user using search specific detailing requirement. By such event happened several times, Recommend model will recognize this user has a specific requirement and begin to send Target Company to user.
+8.	A test model will offer a test for target code and generate an evaluation report. This will ensure the companies get project done in a more secured way. Since not every company in our target user has a IT department, we may offer such a simple code test to sure the code is runnable and good enough to match company’s requirement.
+9.	Both users should able to evaluate each other; such as when the programmers start the task, the CQRFS would start to track the progress of task and provide the report of the code. After the task is done, the two sides of the users can make comments based on their work and wage. This is necessary and will help a lot with the evaluation process.
+10.	Payment model for companies to pay the salary to programmer. When the whole project is done, and the company agrees to pay the salary, the money is sent to the programmers’ web-accounts, and the payment will be distributed according to the agreement made by group members or the work load during the whole task process.
+
+1.3.2 Illustration
+ 
+Fig.3. 1 Use case diagram
+
+1.3.3 Requirements
+A. Functional requirements:
+1.	Web-based user interface: we need setup the friendly website to let users have clear ideal about the service and to interact with all of the users.
+2.	System should be able to restore users’ privacy secretly and without share with third party. We need all the users to do real-name registration and let them pick their own user nickname.
+3.	System provides standard and customized web-searching and post function to allow them search and post for their own need without sharing their privacy.
+4.	Server: we may need On-line virtual machine (such as Koding) or local PCs as the servers to deploy our system.
+5.	In-time service tracking. 
+6.	Well-structured work load dispatch system
+7.	Localization algorithm: Google Maps Java API or other third party open source library.
+8.	Code test system uses third party open source library such as: SONAR - SOCIAL Networking Architecture.
+9.	Ranking and recommendation system based on a. Bug test, b. Runtime and storage, 3. Efficiency, 4. Price/time ration 5. Employee reputation anonymously
+10.	 Third party payment platform, which makes sure the two users, are well protected.
+
+B. Nonfunctional requirements:
+1.	Internet access 
+2.	OS environment: Windows XP, Vista, 7, 8 & latest vision, Apple OS X 10.7 & latest vision, Linux, Chrome OS
+3.	Web Explorer: latest version of Chrome, IE or IE based web explorer, Firefox, Safari are much recommended.
+4.	Professional engineers who should take charge of the system make sure it wouldn’t fail and debug unexpected problem.
+5.	Stability, since the platform will serve the Internet user, the platform may require to maintain online without system down.
+6.	Privacy, we offer anonymous function to hide user’s reality information before they actually start a business transaction.
+	
+ 
+
+
+1.4 Limitations and Constraints     
+  1.4.1 Time limitation
+1.	For this project, there might be not enough time for the group members to implement all the proposed function work.
+2.	Programmers can finished the short-term program relatively easily, but when it comes to the long-term large-scale project, this platform still has some limitations: it’s hard to get a group of programmers in great distance working in the long-term in well maintained discipline.
+3.	It’ll be of more difficulty for employers to make sure that the project will be accomplished on time by long distance management of employees.
+
+1.4.2 Human resource limitation
+1.	Different programmers have different experience, background and techniques.
+2.	Sometimes it’s of relatively great difficulty to find appropriate number of programmers with specific technologies in time to start a work, because there might be not enough online coders on the platform.
+
+1.4.3 Functionality limitation 
+1.	We just start to touch with this area without enough experience, so there may some functions we cannot provide.
+2.	There might be some deviation about the assessment of both the employers and employees from the appraise of each other, on purpose or not.
+3.	For this small project, this system may not be able to support high workload and searching request.
+1.4.4 Budget limitation
+Due to the fact that there is no administration budget, project design budget, software purchasing budget, supplementary budget, the resource in hand is limited, however the target of this project will still be good relatively.
+
+ 
+
+Reference
+[1]. https://en.wikipedia.org/wiki/Freelancer
+[2]. http://www.sonarqube.org/
+[3]. https://en.wikipedia.org/wiki/Recommender_system
+ 
+
+Chapter 2. Design Document
+2.0. Abstract
+Based on the function requirements and the previous design document, we build the design document, which include the system structure and the main modules and components. We talk about how many parts we have and how we plan to implement them in the following order: Part 1 describes the system information about how the system goes and why we build the system in this way, part 2 describes Architecture Design of our system, part 3 talks about module design and how it works, the procedural design is written in part 4, part 5 use the requirement matrix to show the relationship between design and requirements. Finally, part 6 talks about how we design to implement the several specific components such as Data design, UI and code quality test and management.
+
+2.1. System information 
+In order to make use of the programming resource of the energetic programming community and help fulfill the outage of programming resource. Let many people have the access to finish the hard coding problem timely and properly, in the meantime, letting many gifted software engineers show their talent.
+We propose to build a Code Quality-based Ranking and Recommendation Freecoding System (CQRFS). The UI is a website integration with some third party APIs such as SonarQube and it’s open to anyone who have programming resource and need the resource. The key point is we establish the ranking and recommendation system based on the reputation of enterprises and the code quality of programmers, which drive the system, because the recommendation system will recommend the best match for both sides in order to provide the most optimized business relationships. More importantly, the recommendation system can help lots of companies find more talented engineers and help engineers improve their programming skills and also provide more job opportunities for those people who prefer working at home.
+
+However, before we finish the code we can just give some design assumption, for some details such as how the UI will be connected between every other pages, we will know after we finish all of this coding and implementation. Here we try to give all the details based on what we learnt from the course and our experience.
+2.2. Architecture Design
+
+The system would be built on the website using PHP and Java for our database and deploying our system. The system has three main parts: 1. Websites, 2. Servers, 3. third party APIs such as SonarQube and so on. The system can be accessed through the following Web Explorer: latest version of Chrome, IE or IE based web explorer, Firefox, Safari. 
+The diagram of system architecture is as follow: 
+ 
+Fig. 2.2.1 the diagram of system architecture
+The system is composed of six modules, which are discussed as following:
+1.	User Module: This module deals with the data of users on the platform, mainly responsible for processing the user q.
+2.	Searching & Recommendation Module: This module is responsible for the searching, posting and recommendation functionalities provided by the platform.
+3.	Posting/Task collecting module: The users use this module to post the task information and by fill the task collection form which would help the system collect the task information and can be used for searching task.
+4.	Code quality module: This module is responsible for the evaluation of tasks programmers had submitted and test report generation. It interacts with task formation collection module to select and pick submitted tasks and test them. 
+5.	Payment module: Responsible for online payment processing. It will support the popular online payment method such as paypal, Google wallet, V.me by Visa and so on.
+6.	Project feedback module: This module provides functionalities for both coders and companies to rate the projects and make comments. It generates rating with respect to each project, which can be used in the searching and recommendation module.
+
+2.3. Modules & components
+
+The system is divided into 6 modules, namely User Module, Searching and Recommendation Module, Posting/Task collecting module, code quality module, payment module and Project feedback module. Details are as follow:
+2.3.1 User Module
+This module deals with the data of the users on the platform and is mainly responsible for the maintenance of user profiles. Its functionalities are as follows:
+
+Function Name	Input	Output	Description
+Display	User click action	User profile displayed on the screen	Display the user profile
+Modify	data and files input/upload by user	updated user profile	Use information user provides to update his/her profile
+
+Data structure:  A class, User is used to represent individual user on the platform. The class contains multiple attributes, which include those displayed in the user profile. All the textual info displayed in the profile above is in form of String. The photo of each user is stored in form of file and is assigned a unique ID for identification. These info is stored in the underlying database of the platform. When user login the platform, the information is retrieved by SQL command from the database to the controller model, then a new User class is generated, whose attributes are assigned to the corresponding info of user retrieved from the database. These attributes can then be used to display the profile of the user.
+
+The data flow of the module is as follow:
+ 
+Fig. 2.3.1.1 Data flow of user module
+The UI corresponding to the user module are as shown in the diagrams below:
+ 
+Fig 2.3.1.2.1 Screen button of the display function
+ 
+Fig 2.3.1.2.2 Screen button of the modify function
+2.3.2 Searching and recommendation Module 
+This module has two main components, which are searching component and recommendation component;
+Each component has its function, User Interfaces (UI) and its data structure and we build the data flow to show how the data should be processed. Also we indicate which programming language will be used. Users can find the search button from his page or homepage.
+1.	Searching Component:
+In the system, the users use the searching function to search programmer for their tasks or search jobs based on their skills. The users can search the keyword based on the keywords we used in our system, such as user ID, Task information, budget, code language and deadline which are sorted by the increasing order of each keywords such as increasing Budget deadline and so on. 
+
+Function 1. The companies use the searching function to find programmer to do their task 
+Such as task type and budget and deadline and programming language.
+Function 2. The programmer use keywords to search jobs, which fit for their skills based on the budget and programming language.
+
+Function name	Input	Output	Description
+Searching	Keyworld	Posting list of the corresponding searching result sort by different keywords	1. the companies use the searching function to find programmer to do their task.
+2.the programmer use keywords to search jobs which fit for their skills 
+
+For searching function, the users just need to type the keyword in the search box and return. And the users can see different result by click the different keyword near the search box in blue, the results would be sorted based on this keyword. Details would depend on how would we implement the code.
+
+Data flow: 
+ 
+Fig. 2.3.2.1 Data flow of searching function
+
+The following is the UI of the searching function;
+ 
+Fig. 2.3.2.1 Screen button of searching function
+
+2. Recommendation Component
+Description: We will use vector recommendation algorithm to recommend our tasks to users when the companies or the users use search function. We will generate the vector for coder or task using the information of them. By the cosine value of two vectors, we can see how similar they are. And the recommendation system will provide the user or the company the most thirty similar tasks or coders. The vectors are stored in the database upon posting a new task or updating user information or feedback. We will use the data from other component. The vector of the coder is generated using coder’s profile such as readability, reliability and preferred language and so on . And the vector for the task is generated by the task information such as budget, deadline and preferred language and so on. Then the recommendation system will calculate the similarity degree and then select the most suitable thirty results. At last, the UI for recommendation system will show the results.
+
+Function name	Input	Output	Description
+Recommendation	While searching	List of recommendation	Recommend coder/task to corresponding users
+Table 2.3.2.2.1 Recommendation Function
+Recommendation Function1: When companies are searching programmers for the task, the recommendation system will recommend the suitable coders.
+Recommendation Function2: When coders are searching for the tasks, the recommendation system will recommend the suitable task.
+
+Data structure:
+
+For coders, we have the preferred language, coding performance, years of work experience, required salary and other properties of coders to form a vector for each coder.
+
+For tasks, we have the required language, budget, required years of experience and other properties of a task to form a vector for each coder.
+
+Storage in Database:
+
+Here, we will list a table to represent data storage in the database.
+ 
+Table 2.3.2.2.2 Task Vector
+ 
+Table 2.3.2.2.3 Coder Vector
+Clarification on cosine value:
+ We will adjust task vector and coder vector in order to calculate the cosine value of vector task and coder. Language remains the same. Task will requires reliability and readability. We will calculate the required speed of coding according to the deadline and estimated lines of task. And the coder will have property speed from the feedback. The task will have the property budget. We will calculate estimated salary based on deadline and budget. So, the vector of coder and task will have the same property and we can calculate the cosine value of them in an easy manner.
+
+Function 	Input	Output	Description
+1.1 Generate Vector	Task	Vector Task	 After the company posted a task, the vector for the task is generated.
+1.2 Recommendation Calculate	Vector Task	List of Coder	 The system will search the database to get the cosine similarity for the vector of the task and vector in the coder database and return about 30 coders.
+1.3 Show Results	List of Coder	UI	Show the results in the website using the results generated by the function1.2.
+2.1 Retrieve Coder Vector	Coder	Vector Coder	After the coder search for a task, the vector for the coder is retrieved from the database.
+2.2 Recommendation Calculate	Vector Coder	List of Task	The system will search the database to get the cosine similarity for the vector of the task and vector in the coder database and return about 30 tasks.
+2.3 Show Results	List of Task	UI	Show the results in the website using the results generated by the function2.
+Table 2.3.2.2.4 Functions of Recommendation System
+
+Function Name	Pseudocode 
+1.1 Generate Vector			void generate_task_vector(Task task){
+			Vector v;
+			for (i =0;i<properties.length;i++){
+				v.add(calculate(task.property(i)));
+			}
+			store v to database;
+		}
+1.2 Recommendation Calculate			List recommendation_calculate(Vector task){
+			for every coder in database
+				cos=cos<task,coder>;
+			list.add(the largest 30 coders);
+			return list;
+		}
+1.3 Show Results			void show (List list){
+			show(list);
+		}
+2.1 Retrieve Coder Vector			Vector retrieve_code_info(Coder coder){
+			return calculate(retrieve vector from database by key of coder);
+		}
+2.2 Recommendation Calculate			List recommendation_calculate(Vector coder){
+			for every task in database
+				cos=cos<task,coder>;
+			list.add(the largest 30 tasks);
+			return list;
+		}
+2.3 Show Results			void show (List list){
+			show(list);
+		}
+Table 2.3.2.2.5 Pseudocode of functions
+Data flow:
+ 
+Figure 2.3.2.2.1 Data Flow
+
+Description: When users request search, the UI will forward the request to the vector generator. Then the Coder/Task Vector Generator will generate corresponding vectors and the vector will be sent to the recommendation system. The recommendation system will begin to work. It will query in the database and get results then calculate the cosine value between vectors and give out results to the UI. At last, UI will show the results.
+UI:
+ 
+Fig. 2.3.2.2.2 Screen button of Recommendation function
+2.3.3 Posting/collecting Task module
+Functions:
+This module will have some function to post the information about the task. 
+
+Tab 2.3.3.1 functions for posting task
+Function name	Input	Output	Description
+1. Pre-posting new task	user ID	create new task ID	1. Create new task ID in the background.
+2. Change to the task detail page. 
+2. Task detail update	Task ID	task details information or delete task ID	On the detail page, user can decide to 
+1. update the information for current task
+2. delete the task (destory task ID)
+3. clean all the information on the task
+3. Post task	Task ID	Posting task	When user click the update, Task will be posted on platform and public for every body
+
+Tab 2.3.3.2 Pseudocode of function
+
+Function Name	Code
+1. Pre-posting new task	Pre_posting task function (user ID){
+	if (click the new task)
+		create task ID;
+		change page to task detail
+}
+2. Task detail update	Task update function (task ID){
+	if (click update)
+		save all detail information and mark as ready to post
+	else if (click delete)
+		delete all detail information;
+		delete task ID;
+		return to task main page;
+	else if( click clean)
+		delete all detail information
+}
+3. Post task	Post task function (task ID){
+	if (post mark exist)
+		post task to the platform;
+		delete post mark;
+}
+
+
+Data structure:
+When users create a task, system will generate a unique ID for task as the key link to any other entries. 
+Task name will store as string.
+Task information will store in the database with limited at 10000 string words.
+Deadline will store as date-type
+Language will store as string.
+Budget will store as float
+All data will store in SQL and use the task id as the key in table.  
+ 
+Figure 2.3.3.1- data flow
+
+UI/screen button:
+ 
+Figure 2.3.3.3- tasks main page
+ 
+Figure 2.3.3.4- task detail page
+
+2.3.4 Code quality module
+Data structure:
+       The code quality module is responsible for judging the quality of the code and generates the code quality reports. This module will use duplications, complexity, and technical debt ratio to judge the quality of the code. So the input of this module is code document and the output is code report.
+The code quality module involves two data structures:
+1.	Table of jobs for judging
+2.	Report (entity)
+     The table of jobs for judging is a SQL table. In this table, the names of judging jobs are stored; the module will choose one job name at one time and will run the judge process for the code based on this.
+     The Report is an entity. The primary key reports ID, which is the unique key of one report. The attributes are author of the code, result, date, and report link. The author is the coder who uploads the code file and the data type of the author is string. The result is basically the grade sonar provide, which may be A, B, C or D. The data type of result is string. The date is the time users upload their code file, and the data type is date. At last the report link is the link, which can provide users the report details. Also, the data type is string.
+
+ 
+Fig 2.3.4.1 Table of jobs for judging
+ 
+Fig 2.3.4.2 Report entity
+
+Functions:
+    The functions of code quality module are focused on generating the code quality report. So the whole process can be separated into four functions. 
+    The first function is responsible for upload the code file. The second function is gathering the information of the judging task. The third function is responsible for generating the report, and the fourth function is responsible for return the link of the report. 
+
+    Tab 2.3.4.1 Function of  code quality module
+Function name	Input	Output	Description
+1. Code uploading  function	code file	Table of jobs for judging	1. upload code file;
+2.generate the property file;
+3.create task name
+2.Task information gathering  function	Table of jobs for judging	Task name	receive the task name and call Report generating function
+3.Report generating function	Task name	Code quality report	generate the code quality report
+4. Return function	  Report ID	Code quality report	return the code quality report
+5. Third party testing	 Test case
+code file	         Test report	test if the code provide the expected functions
+
+
+Tab 2.3.4.2 Pseudocode of function 
+Function name	Pseudocode 
+1. Code uploading  function	Code uploading  function( task name)
+           {     upload code file;
+                  create the directory using the task name;
+                  create the property file in the directory;
+                  write the task information to Table of jobs for judging;
+                  return;
+             }
+2.Task information gathering  function	Task information gathering  function(table of jobs for judging )
+           {      search table of jobs for judging;
+                  if  there is a code file for judging
+                         call report generating function(task name)
+                  end if
+                  return;
+            }
+3.Report generating function	 Report generating function(task name)
+         {      cd directory of the task;
+                 call sonar to run the judgement;
+                 return the Report entity of the task to the database
+          }
+
+
+So the data flow is like this: 
+
+1.	  Firstly, the code uploading function will upload the code file and it will generate the property file for the task. Also, the code file is put in the certain directory, which has the same name of the task.        
+2.	 Then, the task information gathering function receives the task name. Based on this, it will call the report generating function. 
+3.	The report generating function will use the sonar to generate the code quality report for the task. Basically, it will create the Report entity for the task and will fill all the attributes of the Report entity. Here is the pseudocode:
+4.	At last, the return function will return the judging result of the code, and the link for the details of judging code report will be returned to the users to help them to improve the code.
+5.	Also，the web will provide the third party testing, which will include several test cases, to ensure that the code will provide the expected functions.
+
+ 
+Fig 2.3.4.3 Data flow
+
+Screen button:
+ 
+Fig 2.3.4.4 upload screen
+1.	On the homepage, user clicks the Code report link, it should jump this page(fig 3.4.4)
+ 
+Fig 2.3.4.5 view report screen (score level)
+
+2. User selects the report name, and clicks the view report button, and clicks the score level button, the user should be able to view the score level report.
+ 
+Fig 2.3.4.6 view report screen(code report)
+3. User selects the report name, and clicks the view report button, and clicks the code report button, the user should be able to view the detail of the code report.
+
+2.3.5 Payment module
+This module deals with the payment operation and will support the popular online payment method such as PayPal, Google Wallet, V.me by Visa and so on. 
+Functions: 
+Responsible for online payment processing.
+The company would send pay request to the payment page and the payment page would process the request.
+Function1: The payment page will show all the payment method on it. 
+Function2: The Company could choose directly pay with credit card or other method such as pay pal, Google Wallet or V.me by Visa.
+Function3: Payment page is available to create and store the payment information.
+Function4: By clicking each payment button, it will change to the related payment page.
+Function5: All the payment information could be shown on the payment page.
+
+Function name	Input	Output	Description
+Payment	Billing Information	Payment Information	1. the companies use the payment function to pay to the programmer 
+2.the payment information could be created and stored
+
+Data structure:
+When company creates payment information, system would produce an ID for the payment information.
+And all the payment information would store in the database.
+Payment name will store as string.
+Payment information will store in the database with limited at 10000 string words.
+All data will store in SQL and use the payment ID as the key in table.
+
+ 
+
+                                                        Fig 2.3.5.1-data structure
+
+ 
+
+                                                      Fig 2.3.5.2-data flow
+
+
+Screen button: 
+Fig 2.3.5.3 UI of payment operation
+2.3.6. Project feedback Module
+
+The users both the coders and companies use the project feedback module to rate this whole project and give the reasonable reason. The users would have access to the website to finish the rate based on the rate form we provided. And we would send the users an email to let them finish the feedback like what we did in this course.
+
+Data Structure List <String>
+
+Function 1: Rate the employer
+Companies rate the coder based on their code quality and the code Functional coverage.
+ 
+Fig.2.3.6.1 UI of Rate the employer
+Function 2:
+Coders rate the companies based on the workload, budget and their payment.
+ 
+Fig.2.3.6.2 UI of Rate the employee
+2.4. Procedural Design
+      We use the diagram below to show the procedural design.
+             
+2.4.1 Procedural design
+	By following the use case in requirement document, we can come up with such behaviors below:
+  	sign up-> become a user
+  	The users will register in the website as a company or a programmer following the instructions. And then they can sign in the website with the username and password.
+  	user(programmer) -> update information
+          The programmer will login the website and fill in their personal information or change the former information.
+  	user(programmer) -> online code
+          The programmer will login the website with their username and password and code online according to the need.
+  	user (programmer) -> online judge
+          The user who has the right to see the code will log in and judge the code according to the instructions.
+  	CQRFS -> rate user (programmer) by the code
+          CQRFS will rate the code uploaded by the programmer according to the instructions and their thoughts.
+  	user(programmer) -> search for jobs
+          The programmer could login the website and fill in their personal information including their working skills, work interests and research focus. Then the company would seek the persons they need according to the information the programmers fill in.
+  	CQRFS -> send recommendation to user (programmer)
+          CQRFS will see the code or need the user provided and evaluate it. Then CQRFS will give the user some recommendation base on the professional knowledge.
+  	user(programmer) -> receive recommendation
+          The user will login the website, upload the code and press the “receive recommendation” button. Then the user would receive the recommendation after the evaluation.
+  	user(programmer) -> check task
+          The programmer will login the website and check the task the system give.
+  	user(programmer) -> accept task
+          If the task assigned to them matches well, the programmer will accept the task.
+  	user(programmer) -> cancel task
+          If the task does not match, the programmer could cancel the task.
+  	user(programmer) -> submit task
+          When the programmer finish the task assigned to them, they will submit the code.
+  	user(programmer) -> receive payment
+          After the company see the code and accept the code, the programmer will receive their payment from the company.
+  	user(programmer) -> rate the company
+          After the programmer receive the payment and finish the task, they will rate the company they provide service to.
+  	user(company) -> post task
+          The company will login the website and post the task they want the programmer to do.
+  	user(company) -> delete task
+          The company will login the website and delete the task they posted.
+  	CQRFS -> send recommendation to user(company)
+          CQRFS will evaluate the company’s task and need and make a recommendation for user. Then CQRFS will send the recommendation to the user.
+  	user(company) -> receive recommendation
+          The company will upload their need and task and press the “receive recommendation” button. After CQRFS see and evaluate the task, they will make a recommendation base on the professional knowledge and send it to the company.
+  	user(company) -> select programmer
+          The company will login the website and select the programmers who accept the task.
+  	user(company) -> receive task
+          After the company see the code the programmer finished, the company could receive the task finished by the programmer they selected.
+  	user(company) -> make payment
+          If the company is satisfied with the programmer’s code, they could make payment to the programmer.
+  	user(company) -> rate programmer
+          After the task the company posted is finished and the payment is made, the company could rate their programmer.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+2.5. Requirements Matrix
+The following table is the requirements matrix to demonstrate the relationship between the design and requirements.
+Table 5.1 Table of the requirements matrix
+Design Requirements	Module	data structures	screens	numbering
+users’ profile	User Module
+Class User
+Account Button
+NA
+User interaction	User Module
+Class User
+Message button
+NO. of message
+web-searching	Searching & Recommendation module
+String
+Searching box
+NO. of poster
+Recommendation	Searching & Recommendation module
+vector
+recommendation list
+The degree of satisfaction
+Posting/Task information collecting	Posting/Task collecting  module
+Task entity
+Posting
+NA
+Code report	code quality module
+Report Entity
+upload code button and view report button
+Efficiency of code
+Payment	Payment module
+Google pay Account
+Payment button
+The safety of payment
+Rate the project	Project feedback Module
+String	 Rate page
+ rate of satisfaction 
+
+
+2.6. Component design
+This part introduces how the several specific component/functionality parts could be designed and implemented which mainly includes the following parts: Data design, UI and code quality test and management:
+1. Data design
+(1) Indexed file: We use indexed file to store user information such as personal profile, account activities, money account, task content, rating and ranking and recommendation information, because the indexed file allows easy random access to any record given its file key and avoid repeated information, also save storage space. Such as Hash table B-trees.
+(2) Database management system (DBMS) to hold all of the information such as MySQL and based on types of content: bibliographic, full-text, numeric, and images, we maintain them separately.
+2. UI
+We plan to use PHP /Java to implement our UI.As we know PHP is cheap and easy to follow the general steps, also it’s Object Oriented Programming language. Best on our design:
+1)      First we put our logo on the top of the homepage with a searching box in it, so it clear and simple,
+2)      And then we list our main service and resource just follow the logo show in the UI design parts; such as different programming language support, different task made and its important information.
+3)      On the upper right corner, we setup the login/signup button to let people join the networking and have the access to start use the service.
+4)      For programming details, we plan to design or use third party open source data I/O so we can monitor web situation and make sure we would lose user’s submitting information and query request.
+Homepage:
+We design our home page of our website as follows:
+We have talked the main functionality and this homepage just show the style we plan to design and try to give users a view about what kinds of services the system can provide. 
+ 
+2.6.1 Homepage of the website
+
+3. The code quality management
+                        	
+For code quality test and management: we plan to use third party open source application Sonarqube, the following is how we setup our platform and the code.
+Tools:
+Sonarqube V4.5.1
+windows 7 x64/Mac os
+jdk8
+mysql 5
+sonarqube runner 2.4
+Methods/steps:  
+Download SonarQube
+http://www.sonarqube.org/downloads/
+Unzip the sonarqube-4.5.1 to local directory;
+Start sonar server sonarqube-4.5.1/bin/windows-x86-64/StartSonar.bat
+For different user, please use different edition.
+Go to http://localhost:9000 , you will see the following window;
+If you cannot get in, please check the jdk environment.
+Change the data setting, because sonarqube is embedded H2 Database, so without setting up the database manually, we can still run sonarqube. Open file sonarqube-4.5.1/conf/sonar.properties, modified it as following:
+#----- MySQL 5.x
+sonar.jdbc.url=jdbc:mysql://localhost:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance
+sonar.jdbc.username=root
+sonar.jdbc.password=root
+sonar.sorceEncoding=UTF-8
+sonar.login=admin
+sonar.password=admin
+Please make sure mysql has setup the database; and setup your own password and username; then it’s done, and restart your sonar.
+ 
+From now we start to do really work;
+Setup the sonar runner property of the project, and create the file named: sonar-project.properties;
+Use this format:
+# required metadata
+# My project------your project name
+sonar.projectKey=my:project
+sonar.projectName=My project
+sonar.projectVersion=1.0
+# path to source directories (required)
+# src---------path of your source file
+sonar.sources=src
+# path to test source directories (optional)
+# testDir1,testDir2--------you file path of the test file
+# tests=testDir1,testDir2
+# path to project binaries (optional), for example directory of Java #bytecode
+# binDir--------set you binary file path
+binaries=WebRoot/WEB-INF/classes
+# path to project libraries (optional)
+#libraries=junit.jar
+# advanced parameters
+Use sonar runner to do the project,
+For your convenience, set path of sonar runner equal to path.
+Use cmd to find the directory of your project and run sonar-runner.bat, waiting until it’s finished. When you see success, go to update your website and check the result.
+
+
+
+
+Reference
+[1] https://en.wikipedia.org/wiki/Indexed_file
+[2] https://en.wikipedia.org/wiki/Web_design
+[3] http://www.sonarqube.org/downloads/
+
+Chapter 3. List of known open issues
+1. The connections between some pages are not so smooth, which means sometime we need manually to operate the return to the homepage and find some functions such as to find the posting lists.
+2. We did not implement the recommendation system due to the limited time and resource.
+3. The server has very limited ram and storage; we cannot implement more code quality test for more different programming languages such as C++, python and so on, because when we integrate more programming language API the server would fail in few minutes and other related functions cannot operate well.
+4.Because we set the server on AWS, there is only 992 MB memory for us to run our CQRFS system. So for some occasion, the auto judge system may not work because SonarQube is slowly eating the memory. Although restarting the system can solve the issue, but still there is an open issue for this project.
+
+ 
+
+
+
+
+
+
+
+ 
+
+Chapter 4. Code health reports:
+Final reports on unit testing and code metrics
+4.1 Unit testing 
+
+First part we did the unit testing for java code and second for the PHP code files.
+1.	For java code we use Junit and EclEmma with eclipse. 
+2.	For PHP code files, we planned to use and installed the PHPCoverage, PEAR, PHPUnit, and XDebug 
+The following is the unit testing of the java code, which functions are: 
+1)	Automatically detect the uploaded code files that the coders uploaded.
+2)	When the codes find the uploaded files, it would automatically transfer the file to sonarqube, and sonarqube would generate the report of the uploaded code files.
+3)	The code would automatically output the report to the website and then the user can check.
+Cause it’s an very complex function, I installed the Junit and EclEmma which work with eclipse and try to write the unit testing code, cause we have lots of coding work to do, so we just did the code coverage check.
+Details are following: 
+
+ 
+Fig.4.1.1
+
+The following is the code coverage and the code.
+ 
+Fig.4.1.2
+From the above the table we can see the coverage for: total code coverage (%) 7%; 
+line coverage (%) , branch coverage (%), # of tests, 
+The reason why the coverage is so low and the IDE skipped some many line of codes, because the code files need some many dependency as we said: it needs the uploaded files to drive the next function. 
+
+3.	For PHP code unit testing,
+4.	Even we try some many APIs, we still did not make it work, and there is very few people who are willing to do PHP code test.
+
+
+
+Appendix 
+The following is the java codes we test.
+package output;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.io.*;
+public class output {
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+       System.out.println("this is test");
+       String root=System.getProperty("user.dir");
+              String proot=root;
+    		  root=root+"/"+"codefortest";
+       File file=new File(root);
+       String test[];
+       test=file.list();
+       for(int i=0;i<test.length;i++)
+       {
+        System.out.println(test[i]);
+       }
+       String filename[]=null;
+       int n=0;
+       for(int i=0;i<test.length;i++)
+       {
+    	     char [] mass = test[i].toCharArray();
+    	     char tt='.';
+         if (mass[0]!=tt && !(test[i].equals("src")) && test[i].contains("\u002E")){
+        	 { filename=test[i].split("\\.");
+            n=1;
+        	    break;
+        	    }
+         }
+       }
+       if (n==0)
+           return;
+       System.out.println(filename[0]);
+       String cmd ="mkdir "+"codefortest/"+filename[0];
+       try {
+		Process pos = Runtime.getRuntime().exec(cmd);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+       cmd="mkdir " +"codefortest/"+filename[0]+"/"+"src";
+       try {
+		Process pos2 = Runtime.getRuntime().exec(cmd);
+			} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+              cmd="mkdir " +"codefortest/"+"temp";
+       try {
+		Process pos1 = Runtime.getRuntime().exec(cmd);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+       
+       String fileFrom=root+"/"+filename[0]+"\u002E"+filename[1];
+       String filesour=filename[0]+"\u002E"+filename[1];
+       String fileTo=root+"/"+filename[0]+"/src"+"/"+filesour;
+       try {
+		FileInputStream in = new java.io.FileInputStream(fileFrom);
+		FileOutputStream out = new FileOutputStream(fileTo); 
+		
+		byte[] bt = new byte[1024];  
+        int count;  
+        while ((count = in.read(bt)) > 0) {  
+            out.write(bt, 0, count);  
+        }  
+        in.close();  
+        out.close();  
+
+		
+	} catch (FileNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}  
+       
+       File srcFile= new File(root+"/"+filename[0]+"\u002E"+filename[1]);
+       srcFile.delete();
+
+       FileWriter writer=null;
+       String packaged=root+"/"+filename[0];
+       Date date=new Date();
+       DateFormat format=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+       String time=format.format(date);
+       try {
+   		writer = new FileWriter(packaged+"/sonar-project.properties",true);
+   		writer.write("sonar.projectKey="+filename[0]+":"+time+"\r\n");
+   		writer.write("sonar.projectName="+filename[1]+"::" +filename[0]+"::"+time+"\r\n");
+   	    writer.write("sonar.projectVersion=1.0"+"\r\n");
+   	    writer.write("sonar.sources=src"+"\r\n");
+   	    String lang_tpye=null;
+   	    if (filename[1].equals("java"))
+   	    	    lang_tpye="java";
+   	    writer.write("sonar.language="+lang_tpye+"\r\n");
+   	    writer.write("sonar.sourceEncoding=UTF-8"+"\r\n");
+   	    
+       } catch (IOException e) {
+   		// TODO Auto-generated catch block
+   		e.printStackTrace();
+   	}
+          try {
+   		writer.close();
+   	} catch (IOException e) {
+   		// TODO Auto-generated catch block
+   		e.printStackTrace();
+   	}
+      FileWriter writer1=null;
+          writer1 = new FileWriter(proot+"/tasklist/tasks.txt",true);
+          writer1.write(filename[0]+"\r\n");
+          writer1.close();
+  String cmdss ="sh tt.sh "+filename[0];
+       try {
+    Process pos1 = Runtime.getRuntime().exec(cmdss);
+    
+  } catch (IOException e) {
+    // TODO Auto-generated catch block
+    e.printStackTrace();
+  }    
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+4.2. Code metrics
+1.Duplication Report
+In the duplication test, we will test the duplication for the whole project. We have project duplication level. The less duplication, the less code are copied. We will do more tests on the duplication parts. Here we have three values. The project level value means the whole duplication in the project. The most offending part contains the most duplication and the least offending part contains the least duplication.
+
+Project Level Value
+ 
+Fig.4.2.1 Project Level
+The Most Offending Value
+ 
+Fig.4.2.2 Most Offending Value
+
+The Least Offending Value
+ 
+Fig.4.2.3 Most Offending Value
+
+2.Technical Debt Ratio Report
+In the technical debt ratio test, we will get technical debt ratio for the whole project. We have project technical debt ratio level. The fewer ratios the less codes are to be fixed. We will do more tests on the high ratio parts. Here we have three values. The project level value means the whole technical ratio in the project. The most offending part has the highest ratio and the least offending part has the lowest ratio.
+
+
+
+
+
+Project Level Value
+ 
+Fig.4.2.4 Project Level
+
+
+The Most Offending Value
+ 
+Fig.4.2.5 Most Offending Value
+
+The Least Offending Value
+ 
+Fig.4.2.6 Least Offending Value
+3.Complexity Report
+In the complexity test, we will get complexity for the whole project. We have project complexity level. We will pay more attention on the complex parts. Here we have three values. The project level value means the total complexity in the project. The most offending part has the most complexity and the least offending part has the least complexity.
+
+Project Level Value
+ 
+Fig.4.2.7 Project Level
+
+The Most Offending Value
+ 
+Fig.4.2.8 Most Offending Value
+The Least Offending Value
+ 
+Fig.4.2.9 Least Offending Value
+4.Issues and Technical Debt Report
+In the issues test, we will get issues for the whole project. We have project issues level. The less issues the less code are to be fixed. We will do more tests on the high issues parts. Here we have three values. The project level value means the total issues in the project. The most offending part has the most issues and the least offending part has the fewest issues.
+
+Project Level Value
+ 
+Fig.4.2.10
+The Most Offending Value
+ 
+Fig.4.2.11 Most Offending Value
+The Least Offending Value
+ 
+Fig.4.2.12 Least Offending Value
+5.Size Report
+In the size test, we will get the size for the whole project. We have project size level. Here we have three values. The project level value means the total size for the project. The most offending part is largest and the least offending part is smallest.
+
+Project Level Value
+ 
+Fig.4.2.13 Project Level
+
+
+The Most Offending Value
+ 
+Fig.4.2.14 Most Offending Value
+The Least Offending Value
+ 
+Fig.4.2.15 Least Offending Value
+
+
+
+ 
+
+Detailed member contribution：
+Fengguo Tian:
+1.	Propose the idea of this project
+2.	Writing the core parts of requirement document and checking the content and organizing the paper. 
+3.	Writing the core parts of design document and formatting and organizing the paper. 
+4.	Writing several sections of low-level test case document and checking the content and organizing the paper. 
+5.	Writing the unit test report.
+6.	Organizing Testing report
+7.	Core developer of the develop team (There are two developers in the team), job including server configure, database configure, individual web development and main contributor of web development (login, logout, register, search-job, post-task).
+8.	Formatting and organizing the final report. 
+
+Weili Zhu: 
+1.Providing the basic idea of this project.
+2. Writing several core parts of requirement document.
+3. Writing several core parts of design document 
+4. Writing several core parts of low-level test case document.
+5. Core developer of the develop team (There are only two developers in the team), job including server configure and database configure.
+6. Individual web development (index, user profile, auto code quality report), 
+7. Cooperate web development (login, logout, resign, search-job, post-task).
+            
+
+Chuohao Jiang:
+	Part of requirement document
+	Part of test case document
+	Part of design document
+	Task information
+	Who do what
+	Part of low-level test case document
+	Testing report
+             Helpful during web development
+
+
+Ang Li :  
+              Drawing the diagram of the procedural design.
+ 	 Writing the use case for the procedural design.
+	 Writing the payment module of the design document.
+              Part of the low-level test case document.
+
+Jixing Shi:
+	part of requirement document
+	part of test case document
+	part of design document recommendation module data structure
+	part of low level test case document
+	code quality report
+
+
+
+Knowledge:
+Thanks for the instructors’ help and understanding and thank you our entire team for what I learnt and received, hopefully everyone have a good achievement.
